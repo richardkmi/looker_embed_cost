@@ -45,7 +45,7 @@ st.write("""
 
 # User input for monthly users and profit margin
 monthly_users = st.number_input('Enter the number of monthly users', min_value=0, value=150)
-profit_margin = st.slider('Select the profit margin (%)', min_value=0, max_value=200)
+profit_margin = st.slider('Select the profit margin (%)', min_value=0, max_value=200, value=10)
 
 # Calculate monthly and annualized cost
 monthly_cost, annualized_cost = calculate_cost(monthly_users)
