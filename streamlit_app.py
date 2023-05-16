@@ -14,10 +14,10 @@ def calculate_cost(monthly_users, price_0_to_100=0, price_101_to_500=9.30, price
         total = 100 * price_0_to_100 + 400 * price_101_to_500 + (monthly_users - 500) * price_501_to_1000
     elif monthly_users <= 2000:
         total = 100 * price_0_to_100 + 400 * price_101_to_500 + 500 * price_501_to_1000 + (
-                    monthly_users - 1000) * price_1001_to_2000
+                monthly_users - 1000) * price_1001_to_2000
     else:
         total = 100 * price_0_to_100 + 400 * price_101_to_500 + 500 * price_501_to_1000 + 1000 * price_1001_to_2000 + (
-                    monthly_users - 2000) * price_above_2000
+                monthly_users - 2000) * price_above_2000
     return total, total * 12
 
 
@@ -44,7 +44,7 @@ st.write("""
 """)
 
 # User input for monthly users and profit margin
-monthly_users = st.number_input('Enter the number of monthly users', min_value=0)
+monthly_users = st.number_input('Enter the number of monthly users', min_value=0, value=150)
 profit_margin = st.slider('Select the profit margin (%)', min_value=0, max_value=200)
 
 # Calculate monthly and annualized cost
