@@ -41,7 +41,7 @@ st.write("""
 """)
 
 # User input for monthly users
-monthly_users = st.number_input('Enter the number of monthly users', min_value=0)
+monthly_users = st.number_input('Enter the estimated number of monthly users', min_value=0, value=100)
 
 # Calculate monthly and annualized cost
 monthly_cost, annualized_cost = calculate_cost(monthly_users)
