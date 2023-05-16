@@ -17,7 +17,7 @@ def calculate_cost(monthly_users, price_0_to_100=0, price_101_to_500=9.30, price
     return total, total * 12
 
 def calculate_price(cost, profit_margin_percent):
-    return (cost / (1 - profit_margin_percent / 100) / monthly_users)
+    return (cost / (1 - profit_margin_percent / 100) / (1, monthly_users))
 
 def dollars(x, pos):
     'The two args are the value and tick position'
@@ -38,7 +38,7 @@ st.write("""
 
 # User input for monthly users and profit margin
 monthly_users = st.number_input('Enter the number of monthly users', min_value=0)
-profit_margin = st.slider('Select the profit margin (%)', min_value=0, max_value=99)
+profit_margin = st.slider('Select the profit margin (%)', min_value=0, max_value=200)
 
 # Calculate monthly and annualized cost
 monthly_cost, annualized_cost = calculate_cost(monthly_users)
