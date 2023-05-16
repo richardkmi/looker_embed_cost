@@ -30,7 +30,7 @@ def dollars(x, pos):
     return f'${x:.2f}'
 
 
-st.title('Pricing Model')
+st.title('Looker Embed Cost/Pricing Model')
 
 # Display table with pricing tiers
 st.write("""
