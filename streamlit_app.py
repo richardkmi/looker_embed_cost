@@ -3,7 +3,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.ticker import FuncFormatter
 
-def calculate_cost(monthly_users, price_0_to_100=0, price_101_to_500=9.30, price_501_to_1000=5.00, price_1001_to_2000=3.50, price_above_2000=2.25):
+
+def calculate_cost(monthly_users, price_0_to_100=0, price_101_to_500=9.30, price_501_to_1000=5.00,
+                   price_1001_to_2000=3.50, price_above_2000=2.25):
     if monthly_users <= 100:
         total = monthly_users * price_0_to_100
     elif monthly_users <= 500:
@@ -11,17 +13,22 @@ def calculate_cost(monthly_users, price_0_to_100=0, price_101_to_500=9.30, price
     elif monthly_users <= 1000:
         total = 100 * price_0_to_100 + 400 * price_101_to_500 + (monthly_users - 500) * price_501_to_1000
     elif monthly_users <= 2000:
-        total = 100 * price_0_to_100 + 400 * price_101_to_500 + 500 * price_501_to_1000 + (monthly_users - 1000) * price_1001_to_2000
+        total = 100 * price_0_to_100 + 400 * price_101_to_500 + 500 * price_501_to_1000 + (
+                    monthly_users - 1000) * price_1001_to_2000
     else:
-        total = 100 * price_0_to_100 + 400 * price_101_to_500 + 500 * price_501_to_1000 + 1000 * price_1001_to_2000 + (monthly_users - 2000) * price_above_2000
+        total = 100 * price_0_to_100 + 400 * price_101_to_500 + 500 * price_501_to_1000 + 1000 * price_1001_to_2000 + (
+                    monthly_users - 2000) * price_above_2000
     return total, total * 12
 
+
 def calculate_price(cost, profit_margin_percent):
-    return (cost / (1 - profit_margin_percent / 100) / (1, monthly_users))
+    return cost + (cost * profit_margin_percent / 100)
+
 
 def dollars(x, pos):
     'The two args are the value and tick position'
     return f'${x:.2f}'
+
 
 st.title('Pricing Model')
 
@@ -57,7 +64,7 @@ costs = [calculate_cost(u)[0] for u in users]
 prices = [calculate_price(cost, profit_margin) for cost in costs]
 
 # Plot the results
-fig, ax = plt.subplots(figsize=(10,6))
+fig, ax = plt.subplots(figsize=(10, 6))
 ax.plot(users, costs, label='Cost')
 ax.plot(users, prices, label='Price with Profit Margin')
 
